@@ -28,17 +28,8 @@ class User(BaseModel, Base):
             all_places = storage.all(Place)
             return [place for place in all_places.values() if place.user_id == self.id]
 
-    """
-    from sqlalchemy.orm import relationship
-from models.base_model import BaseModel, Base
-from models.review import Review
 
-class User(BaseModel, Base):
-    """User class for storing user information"""
-
-    __tablename__ = 'users'
-
-    # ... other attributes ...
+    """User class for storing user's review information"""
 
     if models.storage_type == 'db':
         reviews = relationship("Review", cascade="all, delete", back_populates="user")
@@ -52,8 +43,3 @@ class User(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
